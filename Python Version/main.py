@@ -4,7 +4,6 @@ from automation import SmartHomeHub, ScheduleRule, TriggerRule
 def main():
     my_hub = SmartHomeHub()
 
-    # 1. Setup our starting devices
     living_room_light = SmartLight("Living Room Light", default_kelvin=5500)
     main_thermostat = SmartThermostat("Main Thermostat", default_temp=70.0)
     hallway_sensor = MotionSensor("Hallway Sensor")
@@ -13,11 +12,9 @@ def main():
     my_hub.add_device(main_thermostat)
     my_hub.add_device(hallway_sensor)
 
-    # 2. Add our automation rules
     my_hub.add_rule(ScheduleRule("Morning Temp Schedule", "09:00 AM", main_thermostat, 73.0))
     my_hub.add_rule(TriggerRule("Vacant Room Energy Saver", hallway_sensor, living_room_light))
 
-    # 3. Interactive Menu Loop
     while True:
         print("\n--- 🏠 SMART HOME INTERACTIVE CONTROL PANEL ---")
         print("1. View Current System Status")
@@ -41,7 +38,7 @@ def main():
                 new_temp = float(input("Enter new target temperature (°F): "))
                 main_thermostat.set_temperature(new_temp)
             except ValueError:
-                print("❌ Invalid input! Please enter a valid number.")
+                print("❌ Invalid input! Please enter a valid numerical value.")
                 
         elif choice == "4":
             motion_input = input("Is there movement in the hallway? (yes/no): ").strip().lower()
@@ -62,3 +59,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    
