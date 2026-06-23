@@ -30,8 +30,6 @@ class SmartDevice {
         cout << "[Device] " << name << (isPoweredOn ? " turned ON." : " turned OFF.") << endl;
     }
 
-    // A pure virtual function makes this an "Abstract Class". 
-    // Every specific device *must* write its own version of this function.
     virtual void displayStatus() const = 0;
 };
 
