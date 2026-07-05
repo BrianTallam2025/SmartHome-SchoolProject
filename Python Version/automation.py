@@ -56,3 +56,5 @@ class SmartHomeHub:
         for device in self.devices:
             device.show_status()
         print("===========================================================")
+
+        
